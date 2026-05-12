@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -7,7 +6,8 @@ import Cabecalho from './components/Cabecalho'
 import Footer from './components/Footer'
 import InputField from './components/inputField'
 import FormularioCadastro from './components/formulario'
-
+import { useState } from 'react'
+import Contador from './components/Contador'
 function App() {
   return (
     <>
@@ -19,9 +19,13 @@ function App() {
         <FormularioCadastro> </FormularioCadastro>
       </div>
 
-<div>
-  <Footer /> 
-</div>
+      <div>
+        <Footer /> 
+      </div>
+
+      <div>
+        <Contador></Contador>
+      </div>
 
     </>
   )
