@@ -7,6 +7,7 @@ import Cabecalho from './components/Cabecalho'
 import Footer from './components/Footer'
 import InputField from './components/inputField'
 import FormularioCadastro from './components/formulario'
+
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
       <div>
         <FormularioCadastro> </FormularioCadastro>
       </div>
+
 <div>
   <Footer /> 
 </div>
