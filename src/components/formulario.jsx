@@ -3,44 +3,39 @@ import InputField from "./inputField";
 import Botao from "./BotaoEnviar";
 
 function FormularioCadastro() {
-  // const [nome, setnome] = useState('');
-  // const [email, setemail] = useState('');
-  // const [telefone, settelefone] = useState('');
-  // const [erro, setErro] = useState('');
-  // const [sucesso, setSucesso] = useState(false);
   const [user, setUser] = useState({ nome: "", email: "", telefone: "" });
-  const [erroSucesso, setErroSucesso] = useState({erro: "", sucesso:false})
+  const [erroSucesso, setErroSucesso] = useState({ erro: "", sucesso: false });
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (user.nome.trim() === "") {
-      setErroSucesso("O campo nome não pode ser vazio")
-      console.log(erro)
-      return
+      // Atualizando como objeto, mantendo a estrutura original
+      setErroSucesso({ erro: "O campo nome não pode ser vazio", sucesso: false });
+      return;
     }
 
     if (user.telefone.length !== 11) {
-      setErroSucesso("O campo telefone precisa de 11 digitos")
-      console.log(erro)
-      return
+      setErroSucesso({ erro: "O campo telefone precisa de 11 digitos", sucesso: false });
+      return;
     }
 
-
-
-    setErroSucesso('');
-    setErroSucesso({Sucesso: true});
-    console.log (user)
-    setUser({ nome: "", email: "", telefone: "" })  //envio para o banco
-
-
+    // Se passou pelas validações, limpa o erro e seta sucesso como true
+    setErroSucesso({ erro: "", sucesso: true });
+    
+    console.log(user);
+    
+    // Limpa o formulário após o envio
+    setUser({ nome: "", email: "", telefone: "" }); 
   };
-
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {useState ({erro}) && <p style={{ color: 'red' }}>{useState ({erro}) }</p>}
-        {useState ({sucesso})  && <p style={{ color: 'green' }}> {"cadastrado com sucesso!"}</p>}
+        
+        {/* Lendo as variáveis diretamente do objeto erroSucesso */}
+        {erroSucesso.erro && <p style={{ color: 'red' }}>{erroSucesso.erro}</p>}
+        {erroSucesso.sucesso && <p style={{ color: 'green' }}>Cadastrado com sucesso!</p>}
 
         <InputField
           label="Nome"
@@ -80,13 +75,17 @@ function FormularioCadastro() {
           }))}
         />
 
-        <InputField label="Nome da mae" type="text" name="NomeMae" placeholder="Mãe..." />
+        {/* Como você não mapeou o estado "NomeMae" no objeto 'user', deixei sem o value/onChange por enquanto */}
+        <InputField label="Nome da mãe" type="text" name="NomeMae" placeholder="Mãe..." />
 
         <Botao texto="Cadastrar" />
       </form>
 
-      <div>nome: {user.nome}</div>
-      <div>telefone: {user.telefone}</div>
+      {/* Apenas para visualizar se o estado está atualizando */}
+      <div style={{ marginTop: '20px' }}>
+        <div>Nome digitado: {user.nome}</div>
+        <div>Telefone digitado: {user.telefone}</div>
+      </div>
     </div>
   );
 }
