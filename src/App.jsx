@@ -6,9 +6,14 @@ import Cabecalho from './components/Cabecalho'
 import Footer from './components/Footer'
 import InputField from './components/inputField'
 import FormularioCadastro from './components/formulario'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Contador from './components/Contador'
 function App() {
+
+useEffect(() => {
+
+  }, [])
+
   return (
     <>
       <div>
