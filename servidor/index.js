@@ -10,10 +10,12 @@ servidor.post('/registros', (req, res) => {
     const dados = req.body //pega o corpo da requisição
 
     if(!dados.nome){
-       res.status(400).json({
+       return res.status(400).json({
         erro: "Campo de nome é obrigatorio!"
     }
     )}
+
+// aqui fica
 
     console.log(`dados da requisicao, o que tem no corpo que o frontend me mandou:
         ${dados}`)
